@@ -3,7 +3,6 @@ require 'item'
 
 describe GildedRose do
 
-#show name test
   describe '#show_name' do
     it "shows you the name of the item" do
       item = Item.new("foo", 0, 0)
@@ -12,7 +11,6 @@ describe GildedRose do
     end
   end
 
-#quality tests
   describe "#show_quality" do
     it "never lowers quality below 0" do
       item = Item.new("item", 0, 0)
@@ -21,10 +19,7 @@ describe GildedRose do
     end
   end
 
-  end
-
-  #name tests
-  describe 'generic_item' do
+  describe '#generic_item' do
     it 'lowers quality by one after one day' do
       item = Item.new("item", 1, 1)
       GildedRose.new([item]).generic_item
@@ -40,7 +35,7 @@ describe GildedRose do
     it "lowers the sell_in by one after a day" do
       item = Item.new("item", 1, 0)
       GildedRose.new([item]).generic_item
-      expect(item.sell_in).to eq 0
+      expect(item.sell_in).to eq(0)
     end
   end
 
@@ -54,7 +49,7 @@ describe GildedRose do
     it 'never raises quality beyond 50' do
       item = Item.new("Aged Brie", 1, 50)
       GildedRose.new([item]).aged_brie
-      expect(item.quality).to eq(50)
+      expect(item.quality).to eq GildedRose::MAXIMUM_VALUE
     end
     it 'raises quality by two after a day' do
       item = Item.new("Aged Brie", 1, 0)
@@ -65,7 +60,7 @@ describe GildedRose do
     it 'only raises quality to 50 when quality is at 49' do
       item = Item.new("Aged Brie", 0, 49)
       GildedRose.new([item]).aged_brie
-      expect(item.quality).to eq(50)
+      expect(item.quality).to eq GildedRose::MAXIMUM_VALUE
     end
 
     describe '#sulfuras' do
@@ -92,7 +87,7 @@ describe GildedRose do
         it 'never increases quality beyond 50' do
           item = Item.new("Backstage passes to a TAFKAL80ETC concert", 15, 50)
           GildedRose.new([item]).backstage_passes
-          expect(item.quality).to eq(50)
+          expect(item.quality).to eq GildedRose::MAXIMUM_VALUE
         end
       end
 
@@ -106,7 +101,7 @@ describe GildedRose do
         it 'only raises quality to 50 when quality is at 49' do
           item = Item.new("Backstage passes to a TAFKAL80ETC concert", 10, 49)
           GildedRose.new([item]).backstage_passes
-          expect(item.quality).to eq(50)
+          expect(item.quality).to eq GildedRose::MAXIMUM_VALUE
         end
       end
 
@@ -120,7 +115,7 @@ describe GildedRose do
         it 'only raises quality to 50 when quality is at 48 or more' do
           item = Item.new("Backstage passes to a TAFKAL80ETC concert", 5, 48)
           GildedRose.new([item]).backstage_passes
-          expect(item.quality).to eq(50)
+          expect(item.quality).to eq GildedRose::MAXIMUM_VALUE
         end
       end
 
@@ -136,4 +131,5 @@ describe GildedRose do
         expect(item.quality).to eq(0)
       end
     end
+  end
 end

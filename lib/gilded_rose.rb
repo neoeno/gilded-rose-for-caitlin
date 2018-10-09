@@ -1,5 +1,7 @@
 class GildedRose
 
+  MAXIMUM_VALUE = 50
+
   def initialize(items)
     @items = items
   end
@@ -25,7 +27,7 @@ class GildedRose
 
   def aged_brie
     @items.each do |item|
-    item.quality += 1 if item.quality < 50
+    item.quality += 1 if item.quality < MAXIMUM_VALUE
     end
   end
 
@@ -44,7 +46,7 @@ class GildedRose
           item.quality += 1
         end
       else
-        item.quality += 1 if item.quality < 50
+        item.quality += 1 if item.quality < MAXIMUM_VALUE
       end
     end
     sell_by_passed?
