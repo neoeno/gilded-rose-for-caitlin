@@ -51,4 +51,25 @@ class GildedRose
       end
     end
   end
+
+  def aged_brie
+    @items.each do |item|
+    item.quality += 1 if item.quality < 50
+    end
+  end
+
+  # def backstage_passes
+  #   @items.each do |item|
+  #     item.quality += 1 if item.quality < 50
+  #   end
+  # end
+
+  def sulfuras
+  end
+
+  def generic_item
+    @items.each do |item|
+      item.quality -= 1
+    end
+  end
 end
