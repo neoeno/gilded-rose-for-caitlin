@@ -132,4 +132,17 @@ describe GildedRose do
       end
     end
   end
+
+  describe '#conjured' do
+    it 'decreases quality by two after day one' do
+      item = Item.new("Conjured", 0, 0)
+      GildedRose.new([item]).conjured
+      expect(item.quality).to eq 2
+    end
+    it 'decreases quality by four after two days' do
+      item = Item.new("Conjured", 0, 0)
+      2.times { GildedRose.new([item]).conjured }
+      expect(item.quality).to eq 4
+    end
+  end
 end

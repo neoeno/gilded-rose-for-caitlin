@@ -27,14 +27,14 @@ class GildedRose
 
   def aged_brie
     @items.each do |item|
-    item.quality += 1 if item.quality < MAXIMUM_VALUE
+      item.quality += 1 if item.quality < MAXIMUM_VALUE
     end
   end
 
   def sulfuras
   end
 
-#how can I do this better?
+# how can I do this better?
   def backstage_passes
     @items.each do |item|
       if item.sell_in <= 5
@@ -52,11 +52,17 @@ class GildedRose
     sell_by_passed?
   end
 
+  def conjured
+    @items.each do |item|
+      item.quality += 2
+    end
+  end
+
   private
 
   def sell_by_passed?
     @items.each do |item|
-      item.quality = 0 if item.sell_in == 0
+      item.quality = 0 if item.sell_in.zero?
     end
   end
 end
