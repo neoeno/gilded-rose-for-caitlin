@@ -7,7 +7,13 @@ describe GildedRose do
     it 'checks that the name of the object has not changed' do
       item = GenericItem.new("Item", 1, 1)
       gr = GildedRose.new([item])
-      expect(gr.name).to eq "Item"
+      expect(gr.name).to eq ["Item"]
+    end
+    it 'checks that the names of the objects have not changed' do
+      item = GenericItem.new("Item", 1, 1)
+      brie = AgedBrie.new("Brie", 1, 2)
+      gr = GildedRose.new([item, brie])
+      expect(gr.name).to eq ["Item", "Brie"]
     end
   end
 

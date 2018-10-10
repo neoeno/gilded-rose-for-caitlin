@@ -12,9 +12,11 @@ class GildedRose
   end
 
   def name
+    names = []
     @items.each do |item|
-      return item.name
+       names << item.name
     end
+    names
   end
 
   def update_quality

@@ -25,11 +25,7 @@ class BackstagePasses
   private
 
   def guard_quality
-    if @quality > 47
-      @quality = MAXIMUM_VALUE
-    else
-      @quality += 3
-    end
+    @quality > 47 ? @quality = MAXIMUM_VALUE : @quality += 3
   end
 
 end
