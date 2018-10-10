@@ -25,9 +25,12 @@ class GildedRose
     qualities
   end
 
-  private
-  def protect_quality
-    @quality = 0 if @quality.negative?
+  def update_sell_in
+    sell_ins = []
+    @items.each do |item|
+      sell_ins << item.sell_in
+    end
+    sell_ins
   end
 
 end

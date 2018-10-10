@@ -45,20 +45,14 @@ describe GildedRose do
       gr = GildedRose.new([sulfuras, brie])
       expect(gr.update_quality).to eq [80, 3]
     end
-    # it "never lowers quality below 0" do
-    #   item = GenericItem.new("item", 1, 0)
-    #   gr = GildedRose.new([item])
-    #   expect(gr.update_quality).to eq [0]
-    # end
-    # it "never raises quality below 0" do
-    #   brie = AgedBrie.new("brie", 0, 49)
-    #   gr = GildedRose.new([brie])
-    #   expect(gr.update_quality).to eq [50]
-      # aged brie is looking after this atm
-      # but what about conjured?
-    # end
+  end
 
-
+  describe '#update_sell_in' do
+    it 'updates the sell_in date for generic_item' do
+      item = GenericItem.new("Item", 1, 1)
+      gr = GildedRose.new([item])
+      expect(gr.update_sell_in).to eq [0]
+    end
   end
 
 end
