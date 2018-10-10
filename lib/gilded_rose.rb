@@ -1,56 +1,33 @@
-class GildedRose
+require_relative 'generic_item'
+require_relative 'aged_brie'
+require_relative 'sulfuras'
+require_relative 'conjured'
+require_relative 'item'
+require 'pry'
 
-  MAXIMUM_VALUE = 50
+class GildedRose
 
   def initialize(items)
     @items = items
   end
 
-  def show_name
-    @items.each do |item|
-      item.name
-    end
-  end
+  # def name
+  #   @items.each do |item|
+  #     item.name
+  #   end
+  # end
 
   def update_quality
+    qualities = []
     @items.each do |item|
-      item.quality
-       case item.name
-       when "Item"
-         GenericItem.new.quality
-       when "Aged Brie"
-         AgedBrie.new.quality
-       when "Sulfuras"
-         Sulfuras.new.quality
-       when "Conjured"
-         Conjured.new.quality
-       end
+      qualities << item.quality
     end
+    qualities
   end
 
-# how can I do this better?
-  # def backstage_passes
-  #   @items.each do |item|
-  #     if item.sell_in <= 5
-  #       if item.quality < 48
-  #         item.quality += 3
-  #       elsif item.quality == 48
-  #         item.quality += 2
-  #       elsif item.quality == 49
-  #         item.quality += 1
-  #       end
-  #     else
-  #       item.quality += 1 if item.quality < MAXIMUM_VALUE
-  #     end
-  #   end
-  #   sell_by_passed?
-  # end
-  #
-  # private
-  #
-  # def sell_by_passed?
-  #   @items.each do |item|
-  #     item.quality = 0 if item.sell_in.zero?
-  #   end
-  # end
+  private
+  def protect_quality
+    @quality = 0 if @quality.negative?
+  end
+
 end

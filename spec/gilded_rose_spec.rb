@@ -3,76 +3,62 @@ require 'item'
 
 describe GildedRose do
 
-  describe '#show_name' do
-    it "shows you the name of the item" do
-      item = Item.new("foo", 0, 0)
-      GildedRose.new([item]).show_name
-      expect(item.name).to eq "foo"
-    end
-  end
+  # describe '#name' do
+  #   it 'checks that the name of the object has not changed' do
+  #     item = GenericItem.new("Item", 1, 1)
+  #     gr = GildedRose.new([item])
+  #     expect(gr.name).to eq "Item"
+  #   end
+  # end
 
-  describe "#update_quality" do
-    it "never lowers quality below 0" do
-      item = Item.new("item", 0, 0)
-      GildedRose.new([item]).update_quality
-      expect(item.quality).to eq(0)
+  describe '#update_quality' do
+    it 'updates the quality of a GenericItem' do
+      item = GenericItem.new("Item", 1, 1)
+      gr = GildedRose.new([item])
+      expect(gr.update_quality).to eq [0]
     end
-  end
-
-    # describe '#backstage_passes' do
-    #   context 'when sell_in is greater than 10' do
-    #     it 'increases quality by one after each day' do
-    #       item = Item.new("Backstage passes to a TAFKAL80ETC concert", 15, 0)
-    #       GildedRose.new([item]).backstage_passes
-    #       expect(item.quality).to eq(1)
-    #     end
-    #
-    #     it 'never increases quality beyond 50' do
-    #       item = Item.new("Backstage passes to a TAFKAL80ETC concert", 15, 50)
-    #       GildedRose.new([item]).backstage_passes
-    #       expect(item.quality).to eq GildedRose::MAXIMUM_VALUE
-    #     end
-    #   end
-    #
-    #   context 'when sell_in is less than or equal to 10 but more than 5' do
-    #     it 'increases quality by two after each day' do
-    #       item = Item.new("Backstage passes to a TAFKAL80ETC concert", 10, 0)
-    #       2.times { GildedRose.new([item]).backstage_passes }
-    #       expect(item.quality).to eq(2)
-    #     end
-    #
-    #     it 'only raises quality to 50 when quality is at 49' do
-    #       item = Item.new("Backstage passes to a TAFKAL80ETC concert", 10, 49)
-    #       GildedRose.new([item]).backstage_passes
-    #       expect(item.quality).to eq GildedRose::MAXIMUM_VALUE
-    #     end
-    #   end
-    #
-    #   context 'when sell_in is less than or equal to 5 but more than 0' do
-    #     it 'increases quality by three after each day' do
-    #       item = Item.new("Backstage passes to a TAFKAL80ETC concert", 5, 0)
-    #       GildedRose.new([item]).backstage_passes
-    #       expect(item.quality).to eq(3)
-    #     end
-    #
-    #     it 'only raises quality to 50 when quality is at 48 or more' do
-    #       item = Item.new("Backstage passes to a TAFKAL80ETC concert", 5, 48)
-    #       GildedRose.new([item]).backstage_passes
-    #       expect(item.quality).to eq GildedRose::MAXIMUM_VALUE
-    #     end
-    #   end
-    #
-    #   it 'sets quality to 0' do
-    #     item = Item.new("Backstage passes to a TAFKAL80ETC concert", 0, 50)
-    #     GildedRose.new([item]).backstage_passes
-    #     expect(item.quality).to eq(0)
-    #   end
-    #
-    #   it 'does not change quality' do
-    #     item = Item.new("Backstage passes to a TAFKAL80ETC concert", 0, 0)
-    #     GildedRose.new([item]).backstage_passes
-    #     expect(item.quality).to eq(0)
-    #   end
+    it 'updates the quality of 2 generic_items' do
+      item = GenericItem.new("Item", 1, 1)
+      item2 = GenericItem.new("Item", 1, 10)
+      gr = GildedRose.new([item, item2])
+      expect(gr.update_quality).to eq [0, 9]
+    end
+    it 'updates the quality for brie' do
+      brie = AgedBrie.new("brie", 1, 2)
+      gr = GildedRose.new([brie])
+      expect(gr.update_quality).to eq [3]
+    end
+    it 'updates the quality of a generic item and a brie' do
+      item = GenericItem.new("Item", 1, 1)
+      brie = AgedBrie.new("brie", 1, 2)
+      gr = GildedRose.new([item, brie])
+      expect(gr.update_quality).to eq [0, 3]
+    end
+    it "it doesn't change the quality for sulfuras" do
+      sulfuras = Sulfuras.new("sulfuras", 1, 80)
+      gr = GildedRose.new([sulfuras])
+      expect(gr.update_quality).to eq [80]
+    end
+    it "it doesn't change the quality for sulfuras, but does for brie" do
+      sulfuras = Sulfuras.new("sulfuras", 1, 80)
+      brie = AgedBrie.new("brie", 1, 2)
+      gr = GildedRose.new([sulfuras, brie])
+      expect(gr.update_quality).to eq [80, 3]
+    end
+    # it "never lowers quality below 0" do
+    #   item = GenericItem.new("item", 1, 0)
+    #   gr = GildedRose.new([item])
+    #   expect(gr.update_quality).to eq [0]
     # end
+    # it "never raises quality below 0" do
+    #   brie = AgedBrie.new("brie", 0, 49)
+    #   gr = GildedRose.new([brie])
+    #   expect(gr.update_quality).to eq [50]
+      # aged brie is looking after this atm
+      # but what about conjured?
+    # end
+
+
+  end
 
 end
