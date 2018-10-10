@@ -11,11 +11,11 @@ class GildedRose
     @items = items
   end
 
-  # def name
-  #   @items.each do |item|
-  #     item.name
-  #   end
-  # end
+  def name
+    @items.each do |item|
+      return item.name
+    end
+  end
 
   def update_quality
     qualities = []

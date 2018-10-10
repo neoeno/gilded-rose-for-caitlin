@@ -3,13 +3,13 @@ require 'item'
 
 describe GildedRose do
 
-  # describe '#name' do
-  #   it 'checks that the name of the object has not changed' do
-  #     item = GenericItem.new("Item", 1, 1)
-  #     gr = GildedRose.new([item])
-  #     expect(gr.name).to eq "Item"
-  #   end
-  # end
+  describe '#name' do
+    it 'checks that the name of the object has not changed' do
+      item = GenericItem.new("Item", 1, 1)
+      gr = GildedRose.new([item])
+      expect(gr.name).to eq "Item"
+    end
+  end
 
   describe '#update_quality' do
     it 'updates the quality of a GenericItem' do
