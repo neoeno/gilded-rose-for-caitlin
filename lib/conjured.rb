@@ -1,6 +1,6 @@
 class Conjured
 
-  attr_accessor :name, :sell_in
+  attr_accessor :name
 
   def initialize(name, sell_in, quality)
     @name = name
@@ -10,5 +10,9 @@ class Conjured
 
   def quality
     @quality -= 2
+  end
+
+  def sell_in
+    @sell_in -= 1
   end
 end

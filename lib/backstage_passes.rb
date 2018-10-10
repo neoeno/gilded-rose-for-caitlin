@@ -11,7 +11,7 @@ class BackstagePasses
   end
 
   def quality
-    if sell_in == 0
+    if sell_in.zero?
       @quality = 0
     elsif @quality == MAXIMUM_VALUE
       @quality

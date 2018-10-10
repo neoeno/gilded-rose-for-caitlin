@@ -2,7 +2,7 @@ class AgedBrie
 
   MAXIMUM_VALUE = 50
 
-  attr_accessor :name, :sell_in
+  attr_accessor :name
 
   def initialize(name, sell_in, quality)
     @name = name
@@ -13,4 +13,9 @@ class AgedBrie
   def quality
     @quality < MAXIMUM_VALUE ? @quality += 1 : @quality
   end
+
+  def sell_in
+    @sell_in -= 1
+  end
+
 end

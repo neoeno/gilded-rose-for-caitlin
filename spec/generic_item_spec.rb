@@ -16,4 +16,10 @@ describe GenericItem do
     item = GenericItem.new("item", 1, 0)
     expect(item.sell_in).to eq(0)
   end
+
+  it 'lowers by two each after two days' do
+    item = GenericItem.new("item", 10, 0)
+    item.sell_in
+    expect(item.sell_in).to eq(8)
+  end
 end

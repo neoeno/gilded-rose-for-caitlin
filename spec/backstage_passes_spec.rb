@@ -25,7 +25,7 @@ describe BackstagePasses do
       expect(passes.quality).to eq BackstagePasses::MAXIMUM_VALUE
     end
   end
-#binding.pry
+
   context 'when sell_in is less than or equal to 5 but more than 0' do
     it 'increases quality by three after each day' do
       passes = BackstagePasses.new("Backstage passes to a TAFKAL80ETC concert", 5, 2)
