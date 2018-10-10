@@ -1,12 +1,6 @@
-class GenericItem
+require_relative 'item'
 
-  attr_accessor :name
-
-  def initialize(name, sell_in, quality)
-    @name = name
-    @sell_in = sell_in
-    @quality = quality
-  end
+class GenericItem < Item
 
   def quality
     @quality -= 1

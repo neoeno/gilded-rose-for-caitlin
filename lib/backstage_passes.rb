@@ -1,14 +1,8 @@
 require 'pry'
+require_relative 'item'
 
-class BackstagePasses
+class BackstagePasses < Item
   MAXIMUM_VALUE = 50
-  attr_accessor :name, :sell_in
-
-  def initialize(name, sell_in, quality)
-    @name = name
-    @sell_in = sell_in
-    @quality = quality
-  end
 
   def quality
     if sell_in.zero?
