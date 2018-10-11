@@ -12,24 +12,20 @@ class GildedRose
   end
 
   def name
-    names = []
     @items.each do |item|
-      names << item.name
+      item.name
     end
-    names
   end
 
   def update_quality
     @items.each do |item|
-      item.quality
+      item.change_quality
     end
   end
 
   def update_sell_in
-    sell_ins = []
     @items.each do |item|
-      sell_ins << item.sell_in
+      item.change_sell_in
     end
-    sell_ins
   end
 end

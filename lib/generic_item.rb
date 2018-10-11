@@ -4,16 +4,12 @@ class GenericItem < Item
 
   MINIMUM_QUALITY = 0
 
-  def quality
+  def change_quality
     @quality -= 1
   end
 
-  def sell_in
+  def change_sell_in
     @sell_in -= 1
-  end
-
-  def get_quality
-    @quality
   end
 
 end

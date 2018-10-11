@@ -4,7 +4,7 @@ class AgedBrie < Item
 
   MAXIMUM_VALUE = 50
 
-  def quality
+  def change_quality
     @quality < MAXIMUM_VALUE ? @quality += 1 : @quality
   end
 
