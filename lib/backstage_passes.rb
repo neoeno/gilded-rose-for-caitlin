@@ -5,15 +5,10 @@ class BackstagePasses < Item
   MAXIMUM_VALUE = 50
 
   def quality
-    if sell_in.zero?
-      @quality = 0
-    elsif @quality == MAXIMUM_VALUE
-      @quality
-    elsif sell_in >= 10
-      @quality += 1
-    elsif sell_in <= 5 && sell_in >= 0
-      guard_quality
-    end
+    return @quality = 0 if sell_in.zero?
+    return @quality if @quality == MAXIMUM_VALUE
+    return @quality += 1 if sell_in >= 10
+    guard_quality if sell_in <= 5 && sell_in >= 0
   end
 
   private

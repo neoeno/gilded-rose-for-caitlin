@@ -21,7 +21,8 @@ describe GildedRose do
     it 'updates the quality of a GenericItem' do
       item = GenericItem.new("Item", 1, 1)
       gr = GildedRose.new([item])
-      expect(gr.update_quality).to eq [0]
+      gr.update_quality
+      expect(item.get_quality).to eq 0
     end
     it 'updates the quality of 2 generic_items' do
       item = GenericItem.new("Item", 1, 1)

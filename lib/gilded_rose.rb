@@ -14,17 +14,15 @@ class GildedRose
   def name
     names = []
     @items.each do |item|
-       names << item.name
+      names << item.name
     end
     names
   end
 
   def update_quality
-    qualities = []
     @items.each do |item|
-      qualities << item.quality
+      item.quality
     end
-    qualities
   end
 
   def update_sell_in
@@ -34,5 +32,4 @@ class GildedRose
     end
     sell_ins
   end
-
 end

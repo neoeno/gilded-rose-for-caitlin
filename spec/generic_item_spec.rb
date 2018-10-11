@@ -12,6 +12,11 @@ describe GenericItem do
     expect(item.quality).to eq(0)
   end
 
+  # it "doesn't lower quality below MINIMUM_QUALITY" do
+  #   item = GenericItem.new("item", 0, 0)
+  #   expect(item.quality).to eq GenericItem::MINIMUM_QUALITY
+  # end
+
   it "lowers the sell_in by one after a day" do
     item = GenericItem.new("item", 1, 0)
     expect(item.sell_in).to eq(0)
