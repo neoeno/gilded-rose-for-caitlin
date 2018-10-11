@@ -2,8 +2,7 @@ require 'gilded_rose'
 require 'item'
 
 describe GildedRose do
-  let(:item) { double(:generic_item, name: "Item", change_quality: 0, quality: 0,
-                change_sell_in: 0, sell_in: 0) }
+  let(:item) { double(:generic_item, name: "Item", change_quality: 0, quality: 0, change_sell_in: 0, sell_in: 0) }
   let(:item2) { double(:generic_item, change_quality: 9, quality: 9) }
   let(:brie) { double(:aged_brie, name: "Brie", change_quality: 3, quality: 3) }
   let(:sulfuras) { double(:sulfuras, change_quality: 80, quality: 80) }
@@ -12,7 +11,6 @@ describe GildedRose do
   let(:gr_item_brie) { GildedRose.new([item, brie]) }
   let(:gr_sulfuras) { GildedRose.new([sulfuras]) }
   let(:gr_sulfuras_brie) { GildedRose.new([sulfuras, brie]) }
-
 
   describe '#name' do
     it 'checks that the name of the object has not changed' do
