@@ -13,4 +13,10 @@ describe MagicBean do
     allow(Kernel).to receive(:rand).and_return(0)
     expect(magic_bean.change_quality).to eq 1
   end
+  it 'will not decrease quality past 0' do
+    allow(Kernel).to receive(:rand).and_return(1)
+    magic_bean.change_quality
+    expect(magic_bean.change_quality).to eq 0
+  end
+
 end
